@@ -2,3 +2,58 @@ JMS Demo entry
 --------------
 
 link:jms-helloworld.asciidoc[JMS helloworld demo entry]
+
+
+
+How to add a JMS destination against on JBoss EAP 6 & JBoss AS 7?
+-----------------------------------------------------------------
+
+Using Management Console:
+++++++++++++++++++++++++
+
+* Start JBoss use `-c` point to standalone-full.xml if you use standalone mode
+----
+./standalone.sh -c standalone-full.xml
+----
+
+* Navigate to Management Console, Profile -> Messaging -> Destinations -> default -> add
+
+
+Editing standalone-full.xml
++++++++++++++++++++++++++++
+
+* Open the file: JBOSS_HOME/standalone/configuration/standalone-full.xml
+
+* Find the messaging subsystem: 
+----
+<subsystem xmlns="urn:jboss:domain:messaging:1.1">
+----
+
+* Scroll to the end of this section and add the following XML after the </jms-connection-factories> end tag but before the </hornetq-server> element:
+----
+<jms-destinations>
+        <jms-queue name="testQueue">
+            <entry name="queue/test"/>
+            <entry name="java:jboss/exported/jms/queue/test"/>
+        </jms-queue>
+        <jms-topic name="testTopic">
+            <entry name="topic/test"/>
+            <entry name="java:jboss/exported/jms/topic/test"/>
+        </jms-topic>
+    </jms-destinations>
+----
+
+* Save the changes and close the file. 
+
+Using CLI
++++++++++
+
+* Come into the messaging subsystem:
+----
+cd /subsystem=messaging/hornetq-server=default
+----
+
+* execute add operation
+----
+./jms-queue=testQueue:add(durable=false,entries=["java:jboss/exported/jms/queue/test"])
+----
