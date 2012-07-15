@@ -1,0 +1,4 @@
+JMS Demo entry
+--------------
+
+link:jms-helloworld.asciidoc[JMS helloworld demo entry]

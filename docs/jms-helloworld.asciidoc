@@ -1,0 +1,11 @@
+What is it?
+-----------
+
+This demo demonstrates the use of external JMS clients with JBoss Enterprise Application Platform 6 or JBoss AS 7.
+
+It contains the following:
+
+1. A message producer that sends messages to a JMS destination deployed to a JBoss Enterprise Application Platform 6 or JBoss AS 7 server.
+
+2. A message consumer that receives message from a JMS destination deployed to a JBoss Enterprise Application Platform 6 or JBoss AS 7 server.
+
