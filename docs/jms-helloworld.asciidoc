@@ -9,3 +9,9 @@ It contains the following:
 
 2. A message consumer that receives message from a JMS destination deployed to a JBoss Enterprise Application Platform 6 or JBoss AS 7 server.
 
+Procedure to run demo:
+----------------------
+. Configuring a JMS destination on JBoss Enterprise Application Platform 6 or JBoss AS 7 Server.
+. Adding a Application User for security requirements
+. Start JBoss `standalone-full.xml` or `standalone-full-ha.xml` instance
+. Run Java code `Runner.java`
