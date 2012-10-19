@@ -1,6 +1,5 @@
 package com.kylin.jms.helloworld;
 
-import javax.naming.NamingException;
 
 public class Runner {
 
