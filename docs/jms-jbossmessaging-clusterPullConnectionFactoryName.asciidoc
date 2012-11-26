@@ -1,0 +1,47 @@
+What's this?
+------------
+Primary purpose of this test is to:
+
+* Test JBossMessaging ClusterPullConnectionFactoryName attribute - ClusterPullConnectionFactoryName attribute used to pull, or suck, messages between queues, this for fail over
+* Test some feature of JBossMessaging cluster
+* EJB(MDB) cluster 
+* JMS client API
+
+Procedure
+---------
+
+* Copy 2 cluster-enabled profile(all) named node1 and node2, enable jmx-console security credentials, assigin each node with a unique Server Peer ID
+
+Use profile all create node1 and node2
+----
+cp -r all node1
+cp -r all node2
+----
+
+Uncomment admin=admin in both nodes
+----
+vim node1/conf/props/jmx-console-users.properties
+vim node2/conf/props/jmx-console-users.properties
+----
+
+Edit `ServerPeerID` attribute, make sure node1 and node2 with different Server Peer ID
+----
+vim node1/deploy/messaging/messaging-service.xml
+vim node2/deploy/messaging/messaging-service.xml
+----
+
+NOTE: Alternatively, -Djboss.messaging.ServerPeerID=<Integer> can set Sever Peer ID dynamic.
+
+* Deploy destination `testQueue`
+
+* Deploy MDB to both node1 and node2
+
+Maven build jar archive, copy to both nodes
+
+* Run `com.kylin.ejb.mdb.client.QueueClient` send messages to node1, check server side log from node1 console
+
+* Edit ServerPeer attribute, comment out ClusterPullConnectionFactoryName, run `com.kylin.ejb.mdb.client.QueueClient` again send messages to node1, check server side log from node1 console
+----
+vim node1/deploy/messaging/messaging-service.xml
+vim node2/deploy/messaging/messaging-service.xml
+----
