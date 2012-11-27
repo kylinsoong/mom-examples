@@ -30,3 +30,4 @@ Project Archetecture
 . *Test* - test HelloWorldBean
 . *JMSSender* - Send message to JMS Queue
 . *JMSReceiver* Receive message from JMS Queue
+
