@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING/DTD BEAN/EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="helloworldBean" class="com.kylin.jms.spring.HelloWorldBean">
+	</bean>
+
+	<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.provider.url">jnp://localhost:1099</prop>
+				<prop key="java.naming.factory.initial">org.jnp.interfaces.NamingContextFactory</prop>
+				<prop key="java.naming.factory.url.pkgs">org.jnp.interfaces:org.jboss.naming</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="jmsConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>ConnectionFactory</value>
+		</property>
+		<property name="jndiTemplate">
+			<ref bean="jndiTemplate" />
+		</property>
+	</bean>
+	
+	<bean id="destinatinForQueue" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiTemplate">
+			<ref bean="jndiTemplate" />
+		</property>
+		<property name="jndiName">
+			<value>queue/testQueue</value>
+		</property>
+	</bean>
+	
+	<bean id="jmsConverter" class="org.springframework.jms.support.converter.SimpleMessageConverter" />
+	
+	<bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="jmsConnectionFactory" />
+		</property>
+		<property name="defaultDestination">
+			<ref bean="destinatinForQueue" />
+		</property>
+		<property name="messageConverter">
+			<ref bean="jmsConverter" />
+		</property>
+	</bean>
+	
+	<bean id="jmsListenerTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<ref bean="jmsConnectionFactory" />
+		</property>
+		<property name="defaultDestination">
+			<ref bean="destinatinForListener" />
+		</property>
+		<property name="messageConverter">
+			<ref bean="jmsConverter" />
+		</property>
+	</bean>
+	
+	<bean id="destinatinForListener" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiTemplate">
+			<ref bean="jndiTemplate" />
+		</property>
+		<property name="jndiName">
+			<value>queue/testQueue</value>
+		</property>
+	</bean>
+	
+	<bean id="jmsExecuteTemplateBean" class="com.kylin.jms.spring.JmsExecuteTemplate">
+		<property name="jmsQueueTemplate">
+			<ref bean="jmsQueueTemplate" />
+		</property>
+		<!--property name="jmsListenerTemplate">
+			<ref bean="jmsListenerTemplate" />
+		</property-->
+	</bean>
+
+</beans>

@@ -3,6 +3,9 @@ JMS Demo entry
 
 link:jms-helloworld.asciidoc[JMS helloworld demo entry]
 
+link:jms-jbossmessaging-clusterPullConnectionFactoryName.asciidoc[JMS JBossMessaging ServerPeer ClusterPullConnectionFactoryName attribute test demo entry]
+
+link:jms-spring-integration.asciidoc[JMS Spring Integration demo entry]
 
 
 How to add a JMS destination against on JBoss EAP 6 & JBoss AS 7?

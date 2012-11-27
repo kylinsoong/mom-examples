@@ -4,16 +4,17 @@
    <modelVersion>4.0.0</modelVersion>
 
    <groupId>com.kylin.jms</groupId>
-   <artifactId>jboss-messageCount</artifactId>
+   <artifactId>jms-springintegration</artifactId>
    <version>1.0</version>
    <packaging>jar</packaging>
-   <name>messageCount</name>
-   <description>JBoss EAP 4.3 CP06 MBean MessageCount attribute Test</description>
+   <name>JMS Spring Integration</name>
+   <description>JMS Spring Integration</description>
 
    <url>https://github.com/kylinsoong/JMS</url>
 
    <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <spring.version>3.0.0.RELEASE</spring.version>
    </properties>
 
    <dependencies>
@@ -27,6 +28,29 @@
        <artifactId>log4j</artifactId>
        <version>1.2.16</version>
     </dependency>
+    <!-- Spring 3 dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+ 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+            
    </dependencies>
 
    <build>
