@@ -4,25 +4,7 @@ This is JMS Spring Integration Test project, illustrate how to use Spring JMS co
 
 Project Archetecture
 --------------------
-.
-├── jms-spring.xml
-├── log4j.xml
-├── message.xml
-├── pom.xml
-└── src
-    └── main
-        └── java
-            ├── com
-            │   └── kylin
-            │       └── jms
-            │           └── spring
-            │               ├── HelloWorldBean.java
-            │               ├── JmsExecuteTemplate.java
-            │               ├── JMSReceiver.java
-            │               ├── JMSSender.java
-            │               ├── JMSSpringIntegrationFactory.java
-            │               └── Test.java
-            └── log4j.xml
+
 * `jms-spring.xml` Spring Context Configration File
 * `pom.xml` Maven build file
 * `src` all source code
