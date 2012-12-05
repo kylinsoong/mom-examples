@@ -1,0 +1,8 @@
+2012-12-05 18:13:23,428 INFO  [com.kylin.jms.hornetQ.HornetQTaskClientConnector] (main) initialize a HornetQTaskClientConnector with name: test
+2012-12-05 18:13:23,520 ERROR [com.kylin.jms.hornetQ.HornetQTaskClientConnector] (main) connect to hornetQ met a error
+HornetQException[errorCode=2 message=Unable to connect to server using configuration org-hornetq-core-remoting-impl-netty-NettyConnectorFactory?port=5153&host=127-0-0-1]
+	at org.hornetq.core.client.impl.ClientSessionFactoryImpl.connect(ClientSessionFactoryImpl.java:234)
+	at org.hornetq.core.client.impl.ServerLocatorImpl.createSessionFactory(ServerLocatorImpl.java:668)
+	at com.kylin.jms.hornetQ.HornetQTaskClientConnector.connect(HornetQTaskClientConnector.java:81)
+	at com.kylin.jms.hornetQ.HornetQTaskClientConnector.connect(HornetQTaskClientConnector.java:56)
+	at com.kylin.jms.hornetQ.TaskClientTest.main(TaskClientTest.java:9)
