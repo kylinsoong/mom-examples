@@ -60,3 +60,44 @@ cd /subsystem=messaging/hornetq-server=default
 ----
 ./jms-queue=testQueue:add(durable=false,entries=["java:jboss/exported/jms/queue/test"])
 ----
+
+
+How to add an Application User?
+-------------------------------
+* Open a command line
+
+* Type the command for your operating system
+----
+For Linux:   JBOSS_HOME/bin/add-user.sh
+For Windows: JBOSS_HOME\bin\add-user.bat
+----
+
+* You should see the following response:
+----
+What type of user do you wish to add? 
+
+a) Management User (mgmt-users.properties) 
+b) Application User (application-users.properties)
+(a):
+---- 
+At the prompt, type: b
+
+* You should see the following response:
+----
+Enter the details of the new user to add.
+Realm (ApplicationRealm) : 
+----
+If we want to specify a realm, type it here. Otherwise, press enter to use the default `ApplicationRealm`
+
+* When prompted, enter the the Username and Passord.
+----
+Username : kylin
+Password : 
+Re-enter Password : 
+----
+
+* At the next prompt, you will be asked "What roles do you want this user to belong to?"
+----
+What roles do you want this user to belong to? (Please enter a comma separated list, or leave blank for none)[  ]: 
+----
+type `guest` if tyou do not specify a role

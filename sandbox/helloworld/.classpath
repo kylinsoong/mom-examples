@@ -3,6 +3,6 @@
 	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/kylin/work/tools/jboss-eap-6.0/bin/client/jboss-client.jar"/>
+	<classpathentry kind="lib" path="/home/kylin/work/eap/jboss-eap-6.0/bin/client/jboss-client.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
