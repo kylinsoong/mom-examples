@@ -10,7 +10,7 @@ import javax.naming.Context;
 
 import org.apache.log4j.Logger;
 
-import com.kylin.jms.helloworld.resource.Resource;
+import com.kylin.jms.resource.Resource;
 
 public class JMSSender extends UtilBase{
 	

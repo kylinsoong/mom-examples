@@ -1,0 +1,22 @@
+2012-12-12 15:57:16,094 INFO  [com.kylin.jms.util.JMSSender] (main) JMS Sender start
+2012-12-12 15:57:16,111 DEBUG [org.jboss.logging] (main) Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2012-12-12 15:57:16,124 DEBUG [org.jboss.naming.remote.client.InitialContextFactory] (main) Looking for jboss-naming-client.properties using classloader sun.misc.Launcher$AppClassLoader@45a877
+2012-12-12 15:57:16,125 DEBUG [org.jboss.naming.remote.client.InitialContextFactory] (main) jboss.naming.client.endpoint.create.options. has the following options {}
+2012-12-12 15:57:16,125 DEBUG [org.jboss.naming.remote.client.InitialContextFactory] (main) jboss.naming.client.remote.connectionprovider.create.options. has the following options {}
+2012-12-12 15:57:16,130 INFO  [org.xnio] (main) XNIO Version 3.0.4.GA-redhat-1
+2012-12-12 15:57:16,136 INFO  [org.xnio.nio] (main) XNIO NIO Implementation Version 3.0.4.GA-redhat-1
+2012-12-12 15:57:16,145 INFO  [org.jboss.remoting] (main) JBoss Remoting version 3.2.8.GA-redhat-1
+2012-12-12 15:57:16,161 DEBUG [org.xnio.nio] (Remoting "config-based-naming-client-endpoint" read-1) Started channel thread 'Remoting "config-based-naming-client-endpoint" read-1', selector sun.nio.ch.EPollSelectorImpl@1835282
+2012-12-12 15:57:16,162 DEBUG [org.xnio.nio] (Remoting "config-based-naming-client-endpoint" write-1) Started channel thread 'Remoting "config-based-naming-client-endpoint" write-1', selector sun.nio.ch.EPollSelectorImpl@141b571
+2012-12-12 15:57:16,172 DEBUG [org.jboss.naming.remote.client.InitialContextFactory] (main) jboss.naming.client.connect.options. has the following options {}
+2012-12-12 15:57:16,334 INFO  [com.kylin.jms.util.JMSSender] (main) Create Local JNDI Context Successful
+2012-12-12 15:57:16,334 INFO  [com.kylin.jms.util.JMSSender] (main) Attempting to acquire connection factory "jms/RemoteConnectionFactory"
+2012-12-12 15:57:16,473 INFO  [com.kylin.jms.util.JMSSender] (main) Found connection factory "jms/RemoteConnectionFactory" in JNDI
+2012-12-12 15:57:16,473 INFO  [com.kylin.jms.util.JMSSender] (main) Attempting to acquire destination "jms/queue/madpQueue"
+2012-12-12 15:57:16,483 INFO  [com.kylin.jms.util.JMSSender] (main) Found destination "jms/queue/madpQueue" in JNDI
+2012-12-12 15:57:16,586 INFO  [com.kylin.jms.util.JMSSender] (main) create Connection Factory successful
+2012-12-12 15:57:16,600 INFO  [com.kylin.jms.util.JMSSender] (main) create producer successful
+2012-12-12 15:57:16,665 INFO  [com.kylin.jms.util.JMSSender] (main) Send Message: message-0
+2012-12-12 15:57:16,672 INFO  [com.kylin.jms.util.JMSSender] (main) Send Message: message-1
+2012-12-12 15:57:16,681 INFO  [com.kylin.jms.util.JMSSender] (main) Send Message: message-2
+2012-12-12 15:57:16,691 ERROR [org.jboss.naming.remote.protocol.v1.RemoteNamingStoreV1] (Remoting "config-based-naming-client-endpoint" task-3) Channel end notification received, closing channel Channel ID c3ab00e3 (outbound) of Remoting connection 019e11a1 to localhost/127.0.0.1:4447
