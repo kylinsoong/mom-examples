@@ -16,6 +16,18 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <hornetq.version>2.2.16.Final</hornetq.version>
    </properties>
+   
+   <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>3.0.0.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
    <dependencies>
       <dependency>
@@ -39,6 +51,12 @@
          <artifactId>hornetq-jms-client</artifactId>
          <version>${hornetq.version}</version>
       </dependency>
+      
+      <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
    </dependencies>
 
