@@ -8,7 +8,7 @@
 	<bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
 		<property name="environment">
 			<props>
-				<prop key="java.naming.provider.url">jnp://localhost:1099</prop>
+				<prop key="java.naming.provider.url">jnp://10.66.210.5:1099</prop>
 				<prop key="java.naming.factory.initial">org.jnp.interfaces.NamingContextFactory</prop>
 				<prop key="java.naming.factory.url.pkgs">org.jnp.interfaces:org.jboss.naming</prop>
 			</props>
@@ -29,7 +29,7 @@
 			<ref bean="jndiTemplate" />
 		</property>
 		<property name="jndiName">
-			<value>queue/testQueue</value>
+			<value>queue/A</value>
 		</property>
 	</bean>
 	
@@ -64,7 +64,7 @@
 			<ref bean="jndiTemplate" />
 		</property>
 		<property name="jndiName">
-			<value>queue/testQueue</value>
+			<value>queue/A</value>
 		</property>
 	</bean>
 	
