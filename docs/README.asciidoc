@@ -11,8 +11,8 @@ link:jms-spring-integration.asciidoc[JMS Spring Integration demo entry]
 How to add a JMS destination against on JBoss EAP 6 & JBoss AS 7?
 -----------------------------------------------------------------
 
-1. Using Management Console:
-++++++++++++++++++++++++++++
+Using Management Console:
++++++++++++++++++++++++++
 
 * Start Message-Enable JBoss instance, for example start JBoss with `-c` or `--server-config=` point to standalone-full.xml if use standalone mode
 ----
@@ -21,8 +21,9 @@ How to add a JMS destination against on JBoss EAP 6 & JBoss AS 7?
 
 * Navigate to Management Console(http://localhost:9990/console), Profile -> Messaging -> Destinations -> default -> View, then click add button
 
-2. Using Management CLI:
-++++++++++++++++++++++++
+
+Using Management CLI:
++++++++++++++++++++++
 
 * Connect to JBoss CLI
 ----
@@ -39,8 +40,9 @@ cd /subsystem=messaging/hornetq-server=default
 ./jms-queue=testQueue:add(durable=false,entries=["java:jboss/exported/jms/queue/test"])
 ----
 
-3. Deploying *-jms.xml file to deployments folder:
-++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Deploying *-jms.xml file to deployments folder:
++++++++++++++++++++++++++++++++++++++++++++++++
 
 * create a file named `sample-jms.xml`, the content should be look like the following
 ----
@@ -63,8 +65,9 @@ cd /subsystem=messaging/hornetq-server=default
 
 * Note that JBOSS_HOME/docs/schema/jboss-as-messaging-deployment_1_0.xsd is schema file for deploying jms destionation via deployment file
 
-4. Editing JBoss Configuration file, use standalone-full.xml as example:
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Editing JBoss Configuration file, use standalone-full.xml as example:
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Open the file: JBOSS_HOME/standalone/configuration/standalone-full.xml
 
