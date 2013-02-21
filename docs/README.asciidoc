@@ -11,13 +11,6 @@ link:jms-spring-integration.asciidoc[JMS Spring Integration demo entry]
 How to add a JMS destination against on JBoss EAP 6 & JBoss AS 7?
 -----------------------------------------------------------------
 
-* We can use the following 4 ways to add JMS destionation on JBoss EAP 6 or JBoss AS 7
-** Management Console
-** Management CLI
-** Deploy *-jms.xml file to deployments folder
-** Edit JBoss Configuration file
-
-
 1. Using Management Console:
 ++++++++++++++++++++++++++++
 
