@@ -17,6 +17,7 @@ How to add a JMS destination against on JBoss EAP 6 & JBoss AS 7?
 ** Deploy *-jms.xml file to deployments folder
 ** Edit JBoss Configuration file
 
+
 1. Using Management Console:
 ++++++++++++++++++++++++++++
 
