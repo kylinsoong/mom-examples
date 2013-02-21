@@ -11,25 +11,72 @@ link:jms-spring-integration.asciidoc[JMS Spring Integration demo entry]
 How to add a JMS destination against on JBoss EAP 6 & JBoss AS 7?
 -----------------------------------------------------------------
 
-Using Management Console:
-++++++++++++++++++++++++
+* We can use the following 4 ways to add JMS destionation on JBoss EAP 6 or JBoss AS 7
+** Management Console
+** Management CLI
+** Deploy *-jms.xml file to deployments folder
+** Edit JBoss Configuration file
 
-* Start JBoss use `-c` point to standalone-full.xml if you use standalone mode
+1. Using Management Console:
+++++++++++++++++++++++++++++
+
+* Start Message-Enable JBoss instance, for example start JBoss with `-c` or `--server-config=` point to standalone-full.xml if use standalone mode
 ----
 ./standalone.sh -c standalone-full.xml
 ----
 
-* Navigate to Management Console, Profile -> Messaging -> Destinations -> default -> add
+* Navigate to Management Console(http://localhost:9990/console), Profile -> Messaging -> Destinations -> default -> View, then click add button
 
+2. Using Management CLI:
+++++++++++++++++++++++++
 
-Editing standalone-full.xml
-+++++++++++++++++++++++++++
+* Connect to JBoss CLI
+----
+./jboss-cli.sh
+----
+
+* Come into the messaging subsystem:
+----
+cd /subsystem=messaging/hornetq-server=default
+----
+
+* execute add operation
+----
+./jms-queue=testQueue:add(durable=false,entries=["java:jboss/exported/jms/queue/test"])
+----
+
+3. Deploying *-jms.xml file to deployments folder:
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+* create a file named `sample-jms.xml`, the content should be look like the following
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<messaging-deployment xmlns="urn:jboss:messaging-deployment:1.0">
+    <hornetq-server>
+        <jms-destinations>
+            <jms-queue name="testQueue">
+                <entry name="queue/test"/>
+                <entry name="java:jboss/exported/jms/queue/test"/>
+            </jms-queue>
+            <jms-topic name="testTopic">
+                <entry name="topic/test"/>
+                <entry name="java:jboss/exported/jms/topic/test"/>
+            </jms-topic>
+        </jms-destinations>
+    </hornetq-server>
+</messaging-deployment>
+----
+
+* Note that JBOSS_HOME/docs/schema/jboss-as-messaging-deployment_1_0.xsd is schema file for deploying jms destionation via deployment file
+
+4. Editing JBoss Configuration file, use standalone-full.xml as example:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Open the file: JBOSS_HOME/standalone/configuration/standalone-full.xml
 
 * Find the messaging subsystem: 
 ----
-<subsystem xmlns="urn:jboss:domain:messaging:1.1">
+<subsystem xmlns="urn:jboss:domain:messaging:1.2">
 ----
 
 * Scroll to the end of this section and add the following XML after the </jms-connection-factories> end tag but before the </hornetq-server> element:
@@ -48,18 +95,6 @@ Editing standalone-full.xml
 
 * Save the changes and close the file. 
 
-Using CLI
-+++++++++
-
-* Come into the messaging subsystem:
-----
-cd /subsystem=messaging/hornetq-server=default
-----
-
-* execute add operation
-----
-./jms-queue=testQueue:add(durable=false,entries=["java:jboss/exported/jms/queue/test"])
-----
 
 
 How to add an Application User?
