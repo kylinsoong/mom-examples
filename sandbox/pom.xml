@@ -10,7 +10,7 @@
     <name>Parent for JMS</name>
 
     <modules>
-        <module>helloworld</module>
+        <module>jndiClient</module>
         <module>clusterPullConnectionFactoryName</module>
 	<module>springIntegration</module>
 	<module>hornetqClientAPI</module>

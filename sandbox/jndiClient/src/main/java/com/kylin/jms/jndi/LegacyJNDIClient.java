@@ -1,4 +1,4 @@
-package com.kylin.jms.helloworld;
+package com.kylin.jms.jndi;
 
 import java.util.Properties;
 

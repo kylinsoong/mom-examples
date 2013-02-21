@@ -4,11 +4,11 @@
    <modelVersion>4.0.0</modelVersion>
 
    <groupId>com.kylin.jms</groupId>
-   <artifactId>jms-helloworld</artifactId>
+   <artifactId>jms-jndi-client</artifactId>
    <version>1.0</version>
    <packaging>jar</packaging>
-   <name>helloworld</name>
-   <description>Helloworld JMS external producer/consumer client</description>
+   <name>JMS JNDI Client</name>
+   <description>JMS external producer/consumer JNDI client</description>
 
    <url>https://github.com/kylinsoong/JMS</url>
 

@@ -1,4 +1,4 @@
-package com.kylin.jms.helloworld;
+package com.kylin.jms.jndi;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,7 +20,7 @@ import javax.naming.NamingException;
 
 import org.apache.log4j.Logger;
 
-import com.kylin.jms.helloworld.resource.Resource;
+import com.kylin.jms.util.PropsLoader;
 
 public class HelloWorlsJMS {
 	
@@ -29,10 +29,10 @@ public class HelloWorlsJMS {
 	private Context getContext() throws NamingException{
 				
 		 final Properties env = new Properties();
-         env.put(Context.INITIAL_CONTEXT_FACTORY, Resource.get("INITIAL_CONTEXT_FACTORY"));
-         env.put(Context.PROVIDER_URL, Resource.get("PROVIDER_URL"));
-         env.put(Context.SECURITY_PRINCIPAL, Resource.get("SECURITY_PRINCIPAL"));
-         env.put(Context.SECURITY_CREDENTIALS, Resource.get("SECURITY_CREDENTIALS"));
+         env.put(Context.INITIAL_CONTEXT_FACTORY, PropsLoader.get("INITIAL_CONTEXT_FACTORY"));
+         env.put(Context.PROVIDER_URL, PropsLoader.get("PROVIDER_URL"));
+         env.put(Context.SECURITY_PRINCIPAL, PropsLoader.get("SECURITY_PRINCIPAL"));
+         env.put(Context.SECURITY_CREDENTIALS, PropsLoader.get("SECURITY_CREDENTIALS"));
 				
 		return new InitialContext(env);
 	}
@@ -55,18 +55,18 @@ public class HelloWorlsJMS {
         TextMessage message = null;
 		
 		try {
-			String connectionFactoryString = Resource.get("DEFAULT_CONNECTION_FACTORY");
+			String connectionFactoryString = PropsLoader.get("DEFAULT_CONNECTION_FACTORY");
 			logger.info("Attempting to acquire connection factory \"" + connectionFactoryString + "\"");
 			connectionFactory = (ConnectionFactory) ctx.lookup(connectionFactoryString);
 			logger.info("Found connection factory \"" + connectionFactoryString + "\" in JNDI");
 			
-			String destinationString = Resource.get("DEFAULT_DESTINATION");
+			String destinationString = PropsLoader.get("DEFAULT_DESTINATION");
 			logger.info("Attempting to acquire destination \"" + destinationString + "\"");
             destination = (Destination) ctx.lookup(destinationString);
             logger.info("Found destination \"" + destinationString + "\" in JNDI");
             
             // Create the JMS connection, session, producer, and consumer
-            connection = connectionFactory.createConnection(Resource.get("DEFAULT_USERNAME"), Resource.get("DEFAULT_PASSWORD"));
+            connection = connectionFactory.createConnection(PropsLoader.get("DEFAULT_USERNAME"), PropsLoader.get("DEFAULT_PASSWORD"));
             logger.info("create Connection Factory successful");
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             producer = session.createProducer(destination);
@@ -75,10 +75,10 @@ public class HelloWorlsJMS {
             logger.info("create consumer successful");
             connection.start();
             
-            int count = Integer.parseInt(Resource.get("DEFAULT_MESSAGE_COUNT"));
-            String content = Resource.get("DEFAULT_MESSAGE");
+            int count = Integer.parseInt(PropsLoader.get("DEFAULT_MESSAGE_COUNT"));
+            String content = PropsLoader.get("DEFAULT_MESSAGE");
             
-            if(Resource.get("LARGE_MESSAGE").equals("true")) {
+            if(PropsLoader.get("LARGE_MESSAGE").equals("true")) {
             	content = getContent();
             }
 
