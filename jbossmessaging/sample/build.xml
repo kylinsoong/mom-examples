@@ -1,0 +1,87 @@
+<?xml version="1.0"?>  
+  
+<project name="org.jboss.jms" default="deploy" basedir="..">  
+  
+	<property name="app.dir" value="${basedir}/org.jboss.jms" />  
+	<property name="src.dir" value="${app.dir}/src" />
+	<property name="conf.dir" value="${app.dir}/conf" /> 
+	<property name="web.dir" value="${app.dir}/web" />
+	
+	<property file="${app.dir}/build.properties"/>
+	
+	<property name="build.dir" value="${build.home}/${build.profile}" />  
+	<property name="build.classes.dir" value="${build.dir}/classes" />
+	
+	<property name="jboss.client" value="${jboss.home}/client" />
+    <property name="jboss.server" value="${jboss.home}/server/${jboss.profile}/deploy" />  
+    
+	
+    <path id="build.classpath"> 
+    	<fileset dir="${jboss.client}">  
+    		<include name="*.jar" />            
+    	</fileset>
+    	<fileset dir="${repo.dir}">  
+    		<include name="*.jar" />            
+    	</fileset>  
+        <pathelement location="${build.classes.dir}" />  
+    </path>
+	
+	<target name="validateproperties" >  
+		
+		<echo>Check the following parameter is been setting correctly</echo>
+		
+		<echo>repo.dir: ${repo.dir}</echo>
+		<echo>build.home: ${build.home}</echo>
+		<echo>jboss.home: ${jboss.home}</echo>
+		<echo>jboss.profile: ${jboss.profile}</echo>
+
+		<echo>app.dir: ${app.dir}</echo>	 
+		<echo>src.dir: ${src.dir}</echo>
+		
+		<echo>build.dir: ${build.dir}</echo>
+		<echo>build.classes.dir: ${build.classes.dir}</echo>
+			
+		<echo>jboss.client: ${jboss.client}</echo>
+		<echo>jboss.server: ${jboss.server}</echo>	
+	</target> 
+	
+	<target name="clean" depends="validateproperties">  
+        <delete dir="${build.dir}" />  
+	</target>
+	
+	<target name="prepare" depends="clean">  
+		<mkdir dir="${build.dir}" />  
+	    <mkdir dir="${build.classes.dir}" />  
+	</target> 
+	
+	<target name="compile" depends="prepare" description="compile">  
+		<javac srcdir="${src.dir}" destdir="${build.classes.dir}" debug="on" deprecation="on" optimize="off" includes="org/**">  
+	    	<classpath refid="build.classpath" />  
+	    </javac>  
+	</target> 
+	
+	<target name="jar" depends="compile" description="generate all jars">  
+		
+		<jar jarfile="${build.dir}/jmsTest.bean-${version}.jar">  
+	    	<fileset dir="${build.classes.dir}">  
+	        	<include name="org/jboss/test/jms/stateless/*.class" /> 
+	    		<include name="org/jboss/test/jms/common/bean/*.class" /> 
+	    		<include name="org/jboss/test/jms/mdb/*.class" /> 
+	    	</fileset>
+		</jar>
+		
+		
+	</target>
+
+	
+	<target name="deploy" depends="jar">  
+		<copy file="${build.dir}/jmsTest.bean-${version}.jar" todir="${jboss.server}"/>
+		<copy file="${conf.dir}/messaging-servlet-service.xml" todir="${jboss.server}/messaging"/>
+	</target> 
+	
+	<target name="unDeploy" >  
+		<delete file="${jboss.server}/jmsTest.bean-${version}.jar" />
+		<delete file="${jboss.server}/messaging/messaging-servlet-service.xml" />
+	</target>
+  
+</project>    
