@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.jboss.jms.demo</groupId>
-	<artifactId>jms-jbossmessaging-jndi-client</artifactId>
+	<artifactId>jms-jbm-jndi-client</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 	<name>JBossMessaging JNDI Client</name>

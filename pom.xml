@@ -18,7 +18,7 @@
 
     <modules>
         <module>sandbox</module>
-        <module>jbossmessaging</module>
+        <module>jbm</module>
     </modules>
 
 </project>
