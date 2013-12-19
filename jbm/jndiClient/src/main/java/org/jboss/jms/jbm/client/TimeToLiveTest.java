@@ -1,4 +1,4 @@
-package org.jboss.jbossmessaging.client;
+package org.jboss.jms.jbm.client;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;

@@ -1,4 +1,4 @@
-package org.jboss.jbossmessaging.client;
+package org.jboss.jms.jbm.client;
 
 import java.util.Properties;
 
