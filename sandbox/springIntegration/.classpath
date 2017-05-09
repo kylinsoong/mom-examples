@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/kylin/work/eap/jboss-eap-4.3/jboss-as/server/production/deploy/jboss-aop-jdk50.deployer/jboss-aop-jdk50.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jboss43client"/>
-	<classpathentry kind="output" path="target/classes"/>
-</classpath>
