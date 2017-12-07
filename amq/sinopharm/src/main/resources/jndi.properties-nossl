@@ -1,0 +1,15 @@
+
+
+# Set the InitialContextFactory class to use
+
+java.naming.factory.initial =  org.apache.activemq.jndi.ActiveMQInitialContextFactory
+
+# Define the required ConnectionFactory instances
+brokerURL = ssl://localhost:61617
+connectionFactoryNames = myFactoryLookup
+
+# Configure the necessary Queue and Topic objects
+# queue.<JNDI-lookup-name> = <queue-name>
+# topic.<JNDI-lookup-name> = <topic-name>
+queue.myQueueLookup = testSSLQueue
+topic.myTopicLookup = testTopic
