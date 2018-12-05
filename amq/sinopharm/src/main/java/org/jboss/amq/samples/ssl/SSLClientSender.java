@@ -38,9 +38,9 @@ public class SSLClientSender {
 		connectionFactory.setTrustStorePassword("cmsfe_framework_q1w2e3");
 		connectionFactory.setKeyStore("/home/kylin/work/amq/sinopharm/ssl/spclient.ks");
 		connectionFactory.setKeyStorePassword("cmsfe_framework_q1w2e3");
-		connectionFactory.setBrokerURL("ssl://localhost:61617");
-		connectionFactory.setUserName("admin");
-		connectionFactory.setPassword("admin");
+		connectionFactory.setBrokerURL("ssl://10.32.8.112:61617");
+		connectionFactory.setUserName("cmsfe");
+		connectionFactory.setPassword("cmsfe_activemq@123");
 		Connection connection = connectionFactory.createConnection();
 		connection.start();
 		

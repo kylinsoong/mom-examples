@@ -1,0 +1,156 @@
+= Kafka
+:toc: manual
+
+== 安装
+
+=== 前需安装
+
+* 操作系统 - 推荐 Linux
+* Java - 1.8 以上
+
+=== 安装 Zookeeper
+
+[source, text]
+.*1. 下载一个稳定版本*
+----
+# wget http://archive.apache.org/dist/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
+----
+
+[source, text]
+.*2. 解压安装*
+----
+# tar -xvf zookeeper-3.4.6.tar.gz
+# mv zookeeper-3.4.6 /usr/local/zookeeper
+----
+
+[source, text]
+.*3. 单节点配置*
+----
+# mkdir -p /var/lib/zookeeper
+# cp /usr/local/zookeeper/conf/zoo_sample.cfg /usr/local/zookeeper/conf/zoo.cfg
+# vim /usr/local/zookeeper/conf/zoo.cfg
+dataDir=/var/lib/zookeeper
+tickTime=2000
+clientPort=2181
+----
+
+[source, text]
+.*4. 三节点配置*
+----
+//
+----
+
+[source, text]
+.*5. 启动*
+----
+# /usr/local/zookeeper/bin/zkServer.sh start
+JMX enabled by default
+Using config: /usr/local/zookeeper/bin/../conf/zoo.cfg
+Starting zookeeper ... STARTED
+----
+
+=== 安装 Kafka Broker
+
+[source, text]
+.*1. 下载*
+----
+# wget http://apache.claz.org/kafka/2.1.0/kafka_2.11-2.1.0.tgz
+----
+
+[source, text]
+.*2. 安装*
+----
+# tar -xvf kafka_2.11-2.1.0.tgz 
+# mv kafka_2.11-2.1.0 /usr/local/kafka
+# mkdir /tmp/kafka-logs
+----
+
+[source, text]
+.*3. 启动*
+----
+# /usr/local/kafka/bin/kafka-server-start.sh -daemon /usr/local/kafka/config/server.properties
+----
+
+=== Broker 上创建 Topic 测试
+
+[source, text]
+.*1. 创建 Topic*
+----
+# /usr/local/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+Created topic "test".
+
+# /usr/local/kafka/bin/kafka-topics.sh --zookeeper localhost:2181 --describe --topic test
+Topic:test	PartitionCount:1	ReplicationFactor:1	Configs:
+	Topic: test	Partition: 0	Leader: 0	Replicas: 0	Isr: 0
+----
+
+[source, text]
+.*2. 发送消息*
+----
+# /usr/local/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
+>test msg 1
+>test msg 2
+----
+
+[source, text]
+.*3. 接收消息*
+----
+# /usr/local/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+test msg 1
+test msg 2
+----
+
+== Kafka 核心配置项
+
+|===
+|名称 |作用域 |说明
+
+|broker.id
+|Broker
+|集群中唯一标识 broker，默认 0
+
+|port
+|Broker
+|默认监听的端口
+
+|zookeeper.connect
+|Broker
+|zookeeper 地址，例如：`zoo1:2181;zoo2:2182;zoo3:2181`
+
+|log.dirs
+|Broker
+|日志存储路径，例如：`/opt/path1,/opt/path2,/opt/path3`
+
+|num.recovery.threads.per.data.dir
+|Broker
+|日志碎片处理线程数
+
+|auto.create.topics.enable
+|Broker
+|是否自动创建 Topic
+
+|num.partitions
+|Topic
+|分区的数量
+
+|log.retention.ms
+|Topic
+|消息保存的时间限制，超出定义的时间大小则消息会被删除
+
+|log.retention.bytes
+|Topic
+|消息保存的空间限制，超出定义的空间大小则消息会被删除
+
+|log.segment.bytes
+|Topic
+|日志碎片大小
+
+|log.segment.ms
+|Topic
+|日志碎片时间
+
+|message.max.bytes
+|Topic
+|最大消息的限制
+|===
+

@@ -17,3 +17,6 @@ bin
 *.ipr
 *.iws
 /.idea
+
+node_modules
+_book

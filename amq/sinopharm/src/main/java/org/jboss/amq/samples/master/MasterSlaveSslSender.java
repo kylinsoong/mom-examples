@@ -19,9 +19,9 @@ public class MasterSlaveSslSender {
 		connectionFactory.setTrustStorePassword("cmsfe_framework_q1w2e3");
 		connectionFactory.setKeyStore("/home/kylin/work/amq/sinopharm/ssl/spclient.ks");
 		connectionFactory.setKeyStorePassword("cmsfe_framework_q1w2e3");
-		connectionFactory.setBrokerURL("failover:(ssl://localhost:61617,ssl://localhost:61619)");
-		connectionFactory.setUserName("admin");
-		connectionFactory.setPassword("admin");
+		connectionFactory.setBrokerURL("failover:(ssl://10.32.8.111:61617,ssl://10.32.8.112:61617)");
+		connectionFactory.setUserName("cmsfe");
+		connectionFactory.setPassword("cmsfe_activemq@123");
 		Connection conn = connectionFactory.createConnection();
 		conn.start();
 		
